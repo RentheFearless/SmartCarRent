@@ -1,0 +1,32 @@
+{
+  "name": "SmartCarRent Client Dev",
+  
+  // ВИПРАВЛЕННЯ: Додаємо об'єкт "build"
+  "build": {
+    // Вказуємо, який Dockerfile використовувати
+    "dockerfile": "Dockerfile" 
+    // За потреби, можна додати тут "context": ".."
+  },
+  
+  "forwardPorts": [5173], 
+
+  // Створюємо Volume для node_modules
+  "mounts": [
+    "source=smartcarrent_client_node_modules,target=/app/node_modules,type=volume"
+  ],
+
+  // Команда, яка запускається одразу після створення контейнера.
+  "postCreateCommand": "npm run dev",
+
+  // Рекомендовані розширення для React-розробки
+  "customizations": {
+    "vscode": {
+      "settings": {},
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "ms-azuretools.vscode-docker"
+      ]
+    }
+  }
+}

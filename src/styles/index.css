@@ -1,0 +1,29 @@
+:root {
+  --accent: #005bbb;
+  --bg: #ffffff;
+  --text: #000000;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+button {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}

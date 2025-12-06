@@ -1,0 +1,5 @@
+/* bootstrap override */
+:root {
+  --bs-primary: #005bbb;
+  --bs-secondary: #ffd500;
+}
