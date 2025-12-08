@@ -1,57 +1,27 @@
-// src/App.jsx (ПОВНІСТЮ ВИПРАВЛЕНИЙ КОД)
-import { Routes, Route } from 'react-router-dom';
-import { AuthProvider } from './contexts/AuthContext'
-import { CartProvider } from './contexts/CartContext'
-import Header from './components/Header'
-import Footer from './components/Footer'
-import PrivateRoute from './components/PrivateRoute'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Header      from './components/Header';
+import Footer      from './components/Footer';
+import Home        from './pages/Home';
+import Catalog     from './pages/Catalog';
+import Card        from './pages/Card';
+import Contacts    from './pages/Contacts';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';   // твій існуючий стиль
 
-// Сторінки, які були імпортовані раніше (вам потрібно мати ці файли)
-import Home from './pages/Home' 
-import CarPark from './pages/CarPark' // 👈 Додайте цей імпорт, якщо він був
-import CarPage from './pages/CarPage' // 👈 Додайте цей імпорт, якщо він був
-import Checkout from './pages/Checkout' // 👈 Додайте цей імпорт, якщо він був
-import Profile from './pages/Profile' // 👈 Додайте цей імпорт, якщо він був
-
-import Login from './pages/Login'
-import Register from './pages/Register'
-import Verify from './pages/Verify'
-import RentHistory from './pages/RentHistory'
-import Contacts from './pages/Contacts'
-import NotFound from './pages/NotFound'
-
-export default function App() {
-    return (
-        <AuthProvider>
-            <CartProvider>
-                <Header />
-                <main style={{ padding: '1rem', minHeight: '80vh' }}>
-                    <Routes>
-                        {/* 1. ПУБЛІЧНІ МАРШРУТИ (ОСНОВНИЙ КОМПЛЕКТ) */}
-                        <Route path="/" element={<Home />} /> 
-                        <Route path="/park" element={<CarPark />} />
-                        <Route path="/car/:id" element={<CarPage />} />
-                        <Route path="/checkout" element={<Checkout />} />
-                        <Route path="/contacts" element={<Contacts />} />
-
-                        {/* 2. МАРШРУТИ АВТЕНТИФІКАЦІЇ */}
-                        <Route path="/login" element={<Login />} />
-                        <Route path="/register" element={<Register />} />
-                        <Route path="/verify" element={<Verify />} />
-
-                        {/* 3. ЗАХИЩЕНІ МАРШРУТИ (ВИКОРИСТОВУЮТЬ PrivateRoute) */}
-                        <Route element={<PrivateRoute />}>
-                            {/* Зверніть увагу: шляхи дочірніх роутів ВІДНОСНІ (без '/') */}
-                            <Route path="profile" element={<Profile />} /> 
-                            <Route path="history" element={<RentHistory />} />
-                        </Route>
-
-                        {/* 4. 404 Not Found (Завжди останнім) */}
-                        <Route path="*" element={<NotFound />} />
-                    </Routes>
-                </main>
-                <Footer />
-            </CartProvider>
-        </AuthProvider>
-    )
+function App() {
+  return (
+    <BrowserRouter>
+      <Header />
+      <main className="min-vh-100">
+        <Routes>
+          <Route path="/"         element={<Home />} />
+          <Route path="/catalog"  element={<Catalog />} />
+          <Route path="/card/:id" element={<Card />} />
+          <Route path="/contacts" element={<Contacts />} />
+        </Routes>
+      </main>
+      <Footer />
+    </BrowserRouter>
+  );
 }
+export default App;

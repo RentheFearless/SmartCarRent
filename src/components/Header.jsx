@@ -6,7 +6,6 @@ import { useCart } from '../contexts/CartContext'
 
 export default function Header() {
   const { user, logout } = useAuth()
-  console.log('Header user:', user)
   const { totalItems } = useCart() // Змінено на totalItems з CartContext
 
   return (
